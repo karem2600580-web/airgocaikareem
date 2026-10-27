@@ -1,0 +1,222 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Airgo – Send and receive items with travelers, Egypt and abroad</title>
+<meta name="description" content="Airgo connects travelers who have free luggage space with people who need items brought from abroad, for example from the USA to Egypt.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Airgo – Ship with travelers">
+<meta property="og:description" content="Travelers carry items in their spare luggage space. Find a trip or post what you need.">
+<meta name="theme-color" content="#12233f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3fa;--card:#fff;--ink:#12233f;--mut:#56657e;--line:#cfd9e8;--tag:#ffcf33;--tagink:#12233f;--stamp:#d6402f;--btn:#12233f;--btnink:#fff;--ok:#1d7a4f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1727;--card:#16233a;--ink:#eaf0fb;--mut:#9fb0cb;--line:#2a3b58;--btn:#ffcf33;--btnink:#12233f;--stamp:#ff7a68;--ok:#52d699}}
+:root[data-theme="dark"]{--bg:#0e1727;--card:#16233a;--ink:#eaf0fb;--mut:#9fb0cb;--line:#2a3b58;--btn:#ffcf33;--btnink:#12233f;--stamp:#ff7a68;--ok:#52d699}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.w{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+nav a{color:var(--mut);text-decoration:none;margin-left:18px;font-size:15px}nav a:hover{color:var(--ink)}
+h1{font-size:clamp(36px,6vw,64px);line-height:1.02;letter-spacing:-.03em;margin:0 0 16px;font-weight:800}
+h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.02em;margin:0 0 8px}
+p{margin:0 0 12px}.mut{color:var(--mut)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:28px 0 56px}
+.btn{display:inline-block;background:var(--btn);color:var(--btnink);border:0;border-radius:10px;padding:12px 20px;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+/* luggage tag */
+.tag{position:relative;background:var(--tag);color:var(--tagink);border-radius:8px 8px 8px 8px;padding:26px 24px 22px 56px;transform:rotate(2.2deg);box-shadow:0 14px 30px rgba(18,35,63,.22);clip-path:polygon(0 18%,6% 0,100% 0,100% 100%,6% 100%,0 82%)}
+.tag:before{content:"";position:absolute;left:16px;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 2px rgba(18,35,63,.35)}
+.tag .row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px dashed rgba(18,35,63,.4);padding:8px 0}
+.tag b{font-size:28px;letter-spacing:-.02em}.tag small{font-size:13px;opacity:.8}
+.stamp{display:inline-block;margin-top:14px;border:3px solid var(--stamp);color:var(--stamp);border-radius:6px;padding:2px 10px;font-weight:800;transform:rotate(-5deg);background:rgba(255,255,255,.55)}
+section{padding:44px 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.step .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--tag);color:var(--tagink);font-weight:800;margin-bottom:10px}
+.tabs{display:flex;gap:8px;margin:18px 0}
+.tabs button{border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:8px 18px;font:inherit;font-weight:600;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--btn);color:var(--btnink);border-color:var(--btn)}
+.board{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.item{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--tag);border-radius:10px;padding:16px}
+.item.req{border-left-color:var(--stamp)}
+.item h3{margin:0 0 4px;font-size:19px}.item .meta{font-size:14px;color:var(--mut)}
+.item .foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:8px}
+.pill{font-size:13px;background:var(--bg);border-radius:999px;padding:3px 10px;font-weight:600}
+.small{padding:8px 14px;font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+label{display:block;font-size:14px;font-weight:600;margin:10px 0 4px}
+input,select{width:100%;padding:10px 12px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.calc .out{display:grid;gap:6px;margin-top:14px;font-size:16px}
+.calc .out div{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding:4px 0}
+.calc .out .big{font-weight:800;font-size:20px;border:0}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p,details ul{margin:10px 0 0;color:var(--mut)}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--btn);color:var(--btnink);padding:12px 20px;border-radius:10px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;max-width:90vw;text-align:center}
+#toast.on{opacity:1}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--mut);font-size:14px}
+@media(max-width:760px){.hero,.two,.steps{grid-template-columns:1fr}nav a:not(.keep){display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="w">
+<header>
+ <div class="logo">
+  <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Airgo logo"><rect x="6" y="14" width="28" height="21" rx="5" fill="#ffcf33" stroke="#12233f" stroke-width="2.5"/><path d="M14 14v-3a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3" fill="none" stroke="#12233f" stroke-width="2.5"/><path d="M12 25h13m-4-4 4 4-4 4" fill="none" stroke="#12233f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  Airgo
+ </div>
+ <nav><a href="#how">How it works</a><a href="#board">Trips &amp; requests</a><a href="#fees">Fees</a><a href="#rules">Policies</a><a class="keep" href="#post">Post</a></nav>
+</header>
+
+<div class="hero">
+ <div>
+  <h1>Your next suitcase is someone else’s trip.</h1>
+  <p class="mut" style="font-size:18px;max-width:46ch">Travelers with empty kilos carry items for people who need them back home. The sender gets what they need, the traveler earns money, and payment stays safe until delivery.</p>
+  <p style="margin-top:20px"><a class="btn" href="#post">Post a trip or request</a> <a class="btn ghost" href="#how">See how it works</a></p>
+ </div>
+ <div class="tag" aria-label="Example match">
+  <div class="row"><small>Traveler: Ali</small><small>Flight 14 Nov</small></div>
+  <div class="row"><b>New York → Cairo</b><small>10 kg free</small></div>
+  <div class="row"><small>Request: Kareem</small><small>Chocolate, 3 kg</small></div>
+  <span class="stamp">Matched</span>
+ </div>
+</div>
+
+<section id="how">
+ <h2>How it works</h2>
+ <p class="mut">Ali and Kareem never met. Airgo connects them and protects both.</p>
+ <div class="steps">
+  <div class="step"><span class="n">1</span><h3 style="margin:0 0 6px">Ali posts his trip</h3><p class="mut">He lists his route, flight date, and how many kilos he has free.</p></div>
+  <div class="step"><span class="n">2</span><h3 style="margin:0 0 6px">Kareem sends a request</h3><p class="mut">He describes the item and weight, then pays into escrow. The money is held, not released.</p></div>
+  <div class="step"><span class="n">3</span><h3 style="margin:0 0 6px">Delivery and payout</h3><p class="mut">Kareem gives Ali a delivery code at hand-over. Ali gets paid, and Airgo keeps its fee.</p></div>
+ </div>
+</section>
+
+<section id="board">
+ <h2>Trips and requests</h2>
+ <p class="mut">Tap “Request space” on a trip, or “Offer to carry” on a request.</p>
+ <div class="tabs" role="tablist">
+  <button role="tab" id="t1" aria-selected="true">Trips with free space</button>
+  <button role="tab" id="t2" aria-selected="false">Items people need</button>
+ </div>
+ <div class="board" id="list"></div>
+</section>
+
+<section id="post">
+ <h2>Post on Airgo</h2>
+ <div class="two">
+  <div class="panel">
+   <h3 style="margin-top:0">I’m traveling</h3>
+   <label for="tn">Your name</label><input id="tn" placeholder="Ali">
+   <label for="tf">From</label><input id="tf" placeholder="New York">
+   <label for="tt">To</label><input id="tt" placeholder="Cairo">
+   <label for="td">Flight date</label><input id="td" type="date">
+   <label for="tk">Free kilos</label><input id="tk" type="number" min="1" max="30" value="10">
+   <p style="margin-top:14px"><button class="btn" id="addTrip">Post my trip</button></p>
+  </div>
+  <div class="panel">
+   <h3 style="margin-top:0">I need something delivered</h3>
+   <label for="rn">Your name</label><input id="rn" placeholder="Kareem">
+   <label for="ri">Item</label><input id="ri" placeholder="Chocolate">
+   <label for="rf">Buy it in</label><input id="rf" placeholder="New York">
+   <label for="rt">Deliver to</label><input id="rt" placeholder="Cairo">
+   <label for="rk">Weight (kg)</label><input id="rk" type="number" min="0.5" max="30" step="0.5" value="3">
+   <p style="margin-top:14px"><button class="btn" id="addReq">Post my request</button></p>
+  </div>
+ </div>
+</section>
+
+<section id="fees">
+ <h2>Fees</h2>
+ <p class="mut">The sender pays the traveler’s price per kg plus the Airgo service fee. The fee is charged only after a successful delivery.</p>
+ <div class="panel calc" style="max-width:520px">
+  <label for="ck">Weight (kg)</label><input id="ck" type="number" min="0.5" step="0.5" value="3">
+  <label for="cp">Traveler’s price per kg (USD)</label><input id="cp" type="number" min="1" value="12">
+  <div class="out" aria-live="polite">
+   <div><span>Carrying fee</span><span id="o1"></span></div>
+   <div><span>Airgo fee (15%)</span><span id="o2"></span></div>
+   <div class="big"><span>Sender pays</span><span id="o3"></span></div>
+   <div><span>Traveler receives</span><span id="o4"></span></div>
+  </div>
+ </div>
+</section>
+
+<section id="rules">
+ <h2>Policies</h2>
+ <details open><summary>Payment is held until delivery</summary><p>The sender pays when the trip is booked. Airgo holds the money and releases it to the traveler once the sender confirms with the delivery code. Our fee is taken at that moment.</p></details>
+ <details><summary>Banned items</summary><ul><li>Drugs, weapons, and anything illegal in either country</li><li>Cash, jewelry, and valuables over 200 USD</li><li>Medicine without a doctor’s note</li><li>Batteries, liquids, and perishable food on long trips</li><li>Sealed packages the traveler cannot open and check</li></ul></details>
+ <details><summary>Traveler checks before carrying</summary><p>Travelers must see the item and may open the package at hand-over. A traveler can refuse any item, and no one can pressure them to carry something they are unsure about.</p></details>
+ <details><summary>Cancellations and refunds</summary><p>If a traveler cancels or the flight changes, the sender gets a full refund. If a sender cancels more than 48 hours before the flight, the refund is full minus a small processing cost. After that, the traveler keeps 50%.</p></details>
+ <details><summary>Lost or damaged items</summary><p>Report within 48 hours of the delivery date. We review messages, photos, and hand-over records. Refunds cover the carrying fee, and item value is covered up to 100 USD for verified users.</p></details>
+ <details><summary>Verified users</summary><p>Everyone verifies their phone and a government ID before their first trip or request. Travelers also add their flight booking, which we check against the trip date.</p></details>
+ <details><summary>Customs and local law</summary><p>Travelers are responsible for customs rules on arrival. Senders must declare accurate contents and value.</p></details>
+</section>
+<footer>Airgo is a concept demo. Posts live only in this browser session, and payments are not connected yet.</footer>
+</div>
+<div id="toast" role="status"></div>
+
+<script>
+var trips=[
+ {n:"Ali",f:"New York",t:"Cairo",d:"14 Nov",k:10},
+ {n:"Sara",f:"London",t:"Cairo",d:"2 Dec",k:6},
+ {n:"Omar",f:"Dubai",t:"Alexandria",d:"20 Nov",k:8}];
+var reqs=[
+ {n:"Kareem",i:"Chocolate",f:"New York",t:"Cairo",k:3},
+ {n:"Mona",i:"Baby formula",f:"London",t:"Cairo",k:4},
+ {n:"Hassan",i:"Running shoes",f:"Dubai",t:"Cairo",k:2}];
+var tab="trips";
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+function toast(m){var e=document.getElementById("toast");e.textContent=m;e.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(function(){e.classList.remove("on")},2800)}
+function render(){
+ var h="";
+ if(tab==="trips"){
+  trips.forEach(function(x,i){h+='<div class="item"><h3>'+esc(x.f)+' → '+esc(x.t)+'</h3><div class="meta">'+esc(x.n)+' flies '+esc(x.d)+'</div><div class="foot"><span class="pill">'+x.k+' kg free</span><button class="btn small" data-a="req" data-i="'+i+'">Request space</button></div></div>'});
+ }else{
+  reqs.forEach(function(x,i){h+='<div class="item req"><h3>'+esc(x.i)+'</h3><div class="meta">'+esc(x.n)+' needs it from '+esc(x.f)+' to '+esc(x.t)+'</div><div class="foot"><span class="pill">'+x.k+' kg</span><button class="btn small" data-a="offer" data-i="'+i+'">Offer to carry</button></div></div>'});
+ }
+ document.getElementById("list").innerHTML=h;
+ document.getElementById("t1").setAttribute("aria-selected",tab==="trips");
+ document.getElementById("t2").setAttribute("aria-selected",tab==="reqs");
+}
+document.getElementById("t1").onclick=function(){tab="trips";render()};
+document.getElementById("t2").onclick=function(){tab="reqs";render()};
+document.getElementById("list").onclick=function(e){
+ var b=e.target.closest("button");if(!b)return;
+ toast(b.dataset.a==="req"?"Request sent. The traveler will confirm, then you pay into escrow.":"Offer sent. The sender will confirm, then payment goes into escrow.");
+};
+function v(id){return document.getElementById(id).value.trim()}
+document.getElementById("addTrip").onclick=function(){
+ if(!v("tn")||!v("tf")||!v("tt")){toast("Add your name, where you fly from, and where you fly to.");return}
+ var d=v("td")?new Date(v("td")).toLocaleDateString("en-GB",{day:"numeric",month:"short"}):"soon";
+ trips.unshift({n:v("tn"),f:v("tf"),t:v("tt"),d:d,k:+v("tk")||1});
+ tab="trips";render();toast("Trip posted. Senders can now request your space.");
+ document.getElementById("board").scrollIntoView({behavior:"smooth"});
+};
+document.getElementById("addReq").onclick=function(){
+ if(!v("rn")||!v("ri")||!v("rf")||!v("rt")){toast("Fill in your name, the item, and both cities.");return}
+ reqs.unshift({n:v("rn"),i:v("ri"),f:v("rf"),t:v("rt"),k:+v("rk")||1});
+ tab="reqs";render();toast("Request posted. Travelers on this route can now offer to carry it.");
+ document.getElementById("board").scrollIntoView({behavior:"smooth"});
+};
+function calc(){
+ var k=+document.getElementById("ck").value||0,p=+document.getElementById("cp").value||0;
+ var base=k*p,fee=base*0.15,f=function(n){return "$"+n.toFixed(2)};
+ document.getElementById("o1").textContent=f(base);
+ document.getElementById("o2").textContent=f(fee);
+ document.getElementById("o3").textContent=f(base+fee);
+ document.getElementById("o4").textContent=f(base);
+}
+document.getElementById("ck").oninput=calc;document.getElementById("cp").oninput=calc;
+calc();render();
+</script>
+</body>
+</html>
